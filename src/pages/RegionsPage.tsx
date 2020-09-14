@@ -1,38 +1,9 @@
 import { Box, Container, Grid, makeStyles } from "@material-ui/core";
-import ToggleButton from "@material-ui/lab/ToggleButton";
-import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Italy from "@svg-maps/italy";
-import React, { useState } from "react";
+import React from "react";
 import { RadioSVGMap } from "react-svg-map";
 import "react-svg-map/lib/index.css";
-
-export enum Mode {
-  Explore,
-  MultipleChoice,
-  FillIn,
-}
-
-interface Props {
-  initialMode: Mode;
-  onChange: (mode: Mode) => void;
-}
-
-const ModeToggle = ({ initialMode, onChange }: Props) => {
-  const [mode, setMode] = useState<Mode>(initialMode);
-
-  const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: Mode) => {
-    setMode(newMode);
-    onChange(newMode);
-  };
-
-  return (
-    <ToggleButtonGroup value={mode} exclusive onChange={handleAlignment} size="small">
-      <ToggleButton value={Mode.Explore}>EXPLORE</ToggleButton>
-      <ToggleButton value={Mode.MultipleChoice}>MULTIPLE CHOICE</ToggleButton>
-      <ToggleButton value={Mode.FillIn}>FILL IN</ToggleButton>
-    </ToggleButtonGroup>
-  );
-};
+import ModeToggle, { Mode } from "../components/ModeToggle";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
