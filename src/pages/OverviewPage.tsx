@@ -4,24 +4,11 @@ import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
-import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useHistory } from "react-router-dom";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="http://www.gregory-chen.com/">
-        Gregory Chen
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import AppFooter from "../components/AppFooter";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -45,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
   cardContent: {
     flexGrow: 1,
-  },
-  footer: {
-    //backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
   },
 }));
 
@@ -150,19 +133,7 @@ export default function OverviewPage() {
           ))}
         </Grid>
       </Container>
-      {/* Footer */}
-      <footer className={classes.footer}>
-        {/*
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-        */}
-        <Copyright />
-      </footer>
-      {/* End footer */}
+      <AppFooter />
     </>
   );
 }
