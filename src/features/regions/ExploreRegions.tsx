@@ -1,25 +1,25 @@
 import { Grid } from "@material-ui/core";
 import Italy from "@svg-maps/italy";
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { RadioSVGMap } from "react-svg-map";
-import wiki from "wikijs";
-import RegionInfo, { IRegionInfo } from "./RegionCard";
+import RegionInfo from "./RegionCard";
+import { fetchRegionInfo, selectRegionInfo } from "./regionSlice";
 
 export default function ExploreRegions() {
-  const [regionInfo, setRegionInfo] = useState<IRegionInfo | undefined>();
+  const d = useDispatch();
+
+  const [region, setRegion] = useState<string>("");
+
+  const regionInfo = useSelector(selectRegionInfo(region));
 
   const handleMouseOver = async (e: any) => {
     const region = e.target.getAttribute("name");
     if (!region) {
       return;
     }
-
-    const regionPage = await wiki().page(region);
-    const info = await regionPage.info();
-    setRegionInfo({
-      name: region,
-      ...info,
-    } as IRegionInfo);
+    setRegion(region);
+    d(fetchRegionInfo(region));
   };
 
   return (

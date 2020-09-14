@@ -1,5 +1,6 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { AppThunk, RootState } from "../../app/store";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import wiki from "wikijs";
+import { RootState } from "../../app/store";
 
 export interface IRegionInfo {
   name: string;
@@ -11,6 +12,23 @@ export interface IRegionInfo {
   seatType: string;
 }
 
+//
+// THUNKS
+// ------
+
+export const fetchRegionInfo = createAsyncThunk("region/fetchRegionInfo", async (regionName: string) => {
+  const regionPage = await wiki().page(regionName);
+  const info = await regionPage.info();
+  return {
+    ...info,
+    name: regionName,
+  } as IRegionInfo;
+});
+
+//
+// SLICE
+// -----
+
 interface RegionState {
   [name: string]: IRegionInfo;
 }
@@ -21,14 +39,18 @@ export const regionSlice = createSlice({
   name: "region",
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(fetchRegionInfo.fulfilled, (state, action) => {
+      state[action.payload.name] = action.payload;
+    });
+  },
 });
 
-export const {} = regionSlice.actions;
+export default regionSlice.reducer;
 
 //
 // SELECTORS
 // ---------
 
-export const selectRegionInfo = (state: RootState) => state.counter.value;
-
-export default regionSlice.reducer;
+export const selectRegionInfo = (regionName: string) => (state: RootState): IRegionInfo | undefined =>
+  state.region[regionName];
