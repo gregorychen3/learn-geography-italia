@@ -74,7 +74,7 @@ const cards: Card[] = [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Italia_-_mappa_autostrade.svg/250px-Italia_-_mappa_autostrade.svg.png",
   },
   {
-    title: "Streets of Rome",
+    title: "Rome Streets",
     image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/PompeiiStreet.jpg",
   },
   {
