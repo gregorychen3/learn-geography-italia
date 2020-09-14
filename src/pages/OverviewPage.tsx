@@ -1,6 +1,4 @@
-import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import Container from "@material-ui/core/Container";
@@ -14,8 +12,8 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+      <Link color="inherit" href="http://www.gregory-chen.com/">
+        Gregory Chen
       </Link>{" "}
       {new Date().getFullYear()}
       {"."}
@@ -47,12 +45,43 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   footer: {
-    backgroundColor: theme.palette.background.paper,
+    //backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+interface Card {
+  title: string;
+  image: string;
+}
+const cards: Card[] = [
+  {
+    title: "Regions",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lazio_in_Italy.svg/250px-Lazio_in_Italy.svg.png",
+  },
+  {
+    title: "Provinces",
+    image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roma_in_Italy.svg/250px-Roma_in_Italy.svg.png",
+  },
+  {
+    title: "Metropolitan Cities",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Italian_regions_provinces.svg/330px-Italian_regions_provinces.svg.png",
+  },
+  {
+    title: "Autostrade",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Italia_-_mappa_autostrade.svg/250px-Italia_-_mappa_autostrade.svg.png",
+  },
+  {
+    title: "Streets of Rome",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/PompeiiStreet.jpg",
+  },
+  {
+    title: "Rome Metro",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/35/Roma_-_mappa_metropolitana_%28schematica%29.png",
+  },
+];
 
 export default function OverviewPage() {
   const classes = useStyles();
@@ -87,28 +116,16 @@ export default function OverviewPage() {
 
         <Container className={classes.cardGrid} maxWidth="md">
           <Grid container spacing={4}>
-            {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
+            {cards.map((card, idx) => (
+              <Grid item key={idx} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
+                  <CardMedia className={classes.cardMedia} image={card.image} title={card.title} />
                   <CardContent className={classes.cardContent}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      Heading
+                      {card.title}
                     </Typography>
                     <Typography>This is a media card. You can use this section to describe the content.</Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
-                      View
-                    </Button>
-                    <Button size="small" color="primary">
-                      Edit
-                    </Button>
-                  </CardActions>
                 </Card>
               </Grid>
             ))}
@@ -117,12 +134,14 @@ export default function OverviewPage() {
       </main>
       {/* Footer */}
       <footer className={classes.footer}>
+        {/*
         <Typography variant="h6" align="center" gutterBottom>
           Footer
         </Typography>
         <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
           Something here to give the footer a purpose!
         </Typography>
+        */}
         <Copyright />
       </footer>
       {/* End footer */}
