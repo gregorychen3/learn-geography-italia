@@ -5,16 +5,7 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-
-export interface IRegionInfo {
-  name: string;
-  leaderName: string;
-  leaderParty: string;
-  leaderTitle: string;
-  populationTotal: number;
-  seat: string;
-  seatType: string;
-}
+import { IRegionInfo } from "./regionSlice";
 
 export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) {
   return (
