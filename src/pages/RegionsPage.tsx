@@ -1,4 +1,4 @@
-import { Box, Container, makeStyles } from "@material-ui/core";
+import { Box, Container, Grid, makeStyles } from "@material-ui/core";
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Italy from "@svg-maps/italy";
@@ -35,11 +35,18 @@ export default function RegionsPage() {
   return (
     <>
       <div className={classes.appBarSpacer} />
-      <Container maxWidth="sm">
+      <Container maxWidth="md">
         <Box textAlign="center" marginBottom={4}>
           <ModeToggle />
         </Box>
-        <RadioSVGMap map={Italy} />
+        <Grid container>
+          <Grid item xs={12} sm={6}>
+            <RadioSVGMap map={Italy} />
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <RadioSVGMap map={Italy} />
+          </Grid>
+        </Grid>
       </Container>
     </>
   );
