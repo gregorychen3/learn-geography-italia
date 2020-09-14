@@ -17,7 +17,7 @@ export default function AppHeader() {
       <Toolbar>
         <ExploreIcon className={classes.icon} />
         <Typography variant="h6" color="inherit" noWrap>
-          Learn Geography Italia
+          Geografia dell'Italia
         </Typography>
       </Toolbar>
     </AppBar>
