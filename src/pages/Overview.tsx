@@ -11,7 +11,7 @@ import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import CameraIcon from "@material-ui/icons/PhotoCamera";
+import ExploreIcon from "@material-ui/icons/Explore";
 import React from "react";
 
 function Copyright() {
@@ -65,13 +65,13 @@ export default function Overview() {
   const classes = useStyles();
 
   return (
-    <React.Fragment>
+    <>
       <CssBaseline />
       <AppBar position="relative">
         <Toolbar>
-          <CameraIcon className={classes.icon} />
+          <ExploreIcon className={classes.icon} />
           <Typography variant="h6" color="inherit" noWrap>
-            Album layout
+            Learn Geography Italia
           </Typography>
         </Toolbar>
       </AppBar>
@@ -144,6 +144,6 @@ export default function Overview() {
         <Copyright />
       </footer>
       {/* End footer */}
-    </React.Fragment>
+    </>
   );
 }
