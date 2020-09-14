@@ -6,15 +6,24 @@ import React, { useState } from "react";
 import { RadioSVGMap } from "react-svg-map";
 import "react-svg-map/lib/index.css";
 
-enum Mode {
+export enum Mode {
   Explore,
   MultipleChoice,
   FillIn,
 }
 
-const ModeToggle = () => {
-  const [mode, setMode] = useState<Mode>(Mode.Explore);
-  const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: Mode) => setMode(newMode);
+interface Props {
+  initialMode: Mode;
+  onChange: (mode: Mode) => void;
+}
+
+const ModeToggle = ({ initialMode, onChange }: Props) => {
+  const [mode, setMode] = useState<Mode>(initialMode);
+
+  const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: Mode) => {
+    setMode(newMode);
+    onChange(newMode);
+  };
 
   return (
     <ToggleButtonGroup value={mode} exclusive onChange={handleAlignment} size="small">
@@ -37,7 +46,7 @@ export default function RegionsPage() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="md">
         <Box textAlign="center" marginBottom={4}>
-          <ModeToggle />
+          <ModeToggle initialMode={Mode.Explore} onChange={() => {}} />
         </Box>
         <Grid container>
           <Grid item xs={12} sm={6}>
