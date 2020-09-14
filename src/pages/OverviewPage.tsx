@@ -69,7 +69,7 @@ const cards: Card[] = [
   },
   {
     title: "Metropolitan Cities (10)",
-    subtitle: "Administrative divisions of Italy which are a special type of province",
+    subtitle: "Administrative divisions of Italy; a special type of province",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Italian_regions_provinces.svg/330px-Italian_regions_provinces.svg.png",
   },
