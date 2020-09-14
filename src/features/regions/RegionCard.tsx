@@ -1,6 +1,3 @@
-import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
 import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -22,40 +19,38 @@ export default function RegionCard({ regionInfo }: { regionInfo: RegionInfo }) {
   console.log(regionInfo.mainImage);
 
   return (
-    <Card>
-      <CardMedia className={classes.media} component="img" src={regionInfo.mainImage} />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
-          {regionInfo.name}
-        </Typography>
-        <TableContainer>
-          <Table>
-            <TableBody>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                  {regionInfo.seatType}
-                </TableCell>
-                <TableCell>{regionInfo.seat}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                  Population
-                </TableCell>
-                <TableCell>{regionInfo.populationTotal.toLocaleString()}</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell component="th" scope="row">
-                  {regionInfo.leaderTitle}
-                </TableCell>
-                <TableCell>
-                  {regionInfo.leaderName}, {regionInfo.leaderParty}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </CardContent>
-    </Card>
+    <>
+      <img src={regionInfo.mainImage} width="100%" />
+      <Typography gutterBottom variant="h5" component="h2">
+        {regionInfo.name}
+      </Typography>
+      <TableContainer>
+        <Table>
+          <TableBody>
+            <TableRow>
+              <TableCell component="th" scope="row">
+                {regionInfo.seatType}
+              </TableCell>
+              <TableCell>{regionInfo.seat}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell component="th" scope="row">
+                Population
+              </TableCell>
+              <TableCell>{regionInfo.populationTotal.toLocaleString()}</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell component="th" scope="row">
+                {regionInfo.leaderTitle}
+              </TableCell>
+              <TableCell>
+                {regionInfo.leaderName}, {regionInfo.leaderParty}
+              </TableCell>
+            </TableRow>
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </>
   );
 }
 
