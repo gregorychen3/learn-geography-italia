@@ -16,11 +16,9 @@ export default function ExploreRegions() {
 
     const regionPage = await wiki().page(region);
     const info = await regionPage.info();
-    const mainImage = await regionPage.mainImage();
     setRegionInfo({
       name: region,
       ...info,
-      mainImage,
     } as IRegionInfo);
   };
 

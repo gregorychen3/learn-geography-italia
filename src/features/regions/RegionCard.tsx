@@ -1,5 +1,3 @@
-import { CardMedia } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -16,25 +14,14 @@ export interface IRegionInfo {
   populationTotal: number;
   seat: string;
   seatType: string;
-  mainImage: string;
 }
 
-const useStyles = makeStyles({
-  media: {
-    height: 200,
-  },
-});
-
 export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) {
-  const classes = useStyles();
-  console.log(regionInfo.mainImage);
-
   return (
     <>
       <Typography gutterBottom variant="h5" component="h2">
         {regionInfo.name}
       </Typography>
-      <CardMedia className={classes.media} title="Paella dish" component="img" src={regionInfo.mainImage} />
       <TableContainer>
         <Table>
           <TableBody>
@@ -64,7 +51,3 @@ export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) 
     </>
   );
 }
-
-/*
-  mainImage: string;
-  */
