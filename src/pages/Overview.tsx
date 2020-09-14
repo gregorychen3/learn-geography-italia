@@ -1,4 +1,3 @@
-import AppBar from "@material-ui/core/AppBar";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import CardActions from "@material-ui/core/CardActions";
@@ -8,9 +7,7 @@ import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import { makeStyles } from "@material-ui/core/styles";
-import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
-import ExploreIcon from "@material-ui/icons/Explore";
 import React from "react";
 
 function Copyright() {
@@ -27,9 +24,6 @@ function Copyright() {
 }
 
 const useStyles = makeStyles((theme) => ({
-  icon: {
-    marginRight: theme.spacing(2),
-  },
   heroContent: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(8, 0, 6),
@@ -65,14 +59,6 @@ export default function Overview() {
 
   return (
     <>
-      <AppBar position="relative">
-        <Toolbar>
-          <ExploreIcon className={classes.icon} />
-          <Typography variant="h6" color="inherit" noWrap>
-            Learn Geography Italia
-          </Typography>
-        </Toolbar>
-      </AppBar>
       <main>
         {/* Hero unit */}
         <div className={classes.heroContent}>
