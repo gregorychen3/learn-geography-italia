@@ -69,7 +69,6 @@ export default function OverviewPage() {
             <Typography variant="h5" align="center" color="textSecondary" paragraph>
               Learn regions, cities, and roads of Italy
             </Typography>
-
             {/*<div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
