@@ -52,34 +52,42 @@ const useStyles = makeStyles((theme) => ({
 
 interface Card {
   title: string;
+  subtitle: string;
   image: string;
 }
 const cards: Card[] = [
   {
-    title: "Regions",
+    title: "Regions (20)",
+    subtitle: "The first-level constituent entities of the Italian Republic",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lazio_in_Italy.svg/250px-Lazio_in_Italy.svg.png",
   },
   {
-    title: "Provinces",
+    title: "Provinces (107)",
+    subtitle:
+      "The constituent entities of the Italian Republic, on an intermediate level between a municipality (comune) and a region (regione)",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roma_in_Italy.svg/250px-Roma_in_Italy.svg.png",
   },
   {
-    title: "Metropolitan Cities",
+    title: "Metropolitan Cities (10)",
+    subtitle: "Administrative divisions of Italy which are a special type of province",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Italian_regions_provinces.svg/330px-Italian_regions_provinces.svg.png",
   },
   {
     title: "Autostrade",
+    subtitle: "Italian national system of motorways",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Italia_-_mappa_autostrade.svg/250px-Italia_-_mappa_autostrade.svg.png",
   },
   {
-    title: "Rome Streets",
-    image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/PompeiiStreet.jpg",
+    title: "Rome Metro",
+    subtitle: "Rapid transit system in Rome, Italy",
+    image: "https://upload.wikimedia.org/wikipedia/commons/3/35/Roma_-_mappa_metropolitana_%28schematica%29.png",
   },
   {
-    title: "Rome Metro",
-    image: "https://upload.wikimedia.org/wikipedia/commons/3/35/Roma_-_mappa_metropolitana_%28schematica%29.png",
+    title: "Rome Streets",
+    subtitle: "The main ones...",
+    image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/PompeiiStreet.jpg",
   },
 ];
 
@@ -124,7 +132,7 @@ export default function OverviewPage() {
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.title}
                     </Typography>
-                    <Typography>This is a media card. You can use this section to describe the content.</Typography>
+                    <Typography>{card.subtitle}</Typography>
                   </CardContent>
                 </Card>
               </Grid>
