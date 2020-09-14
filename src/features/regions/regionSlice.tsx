@@ -19,7 +19,7 @@ export interface IRegionInfo {
 export const fetchRegionInfo = createAsyncThunk<IRegionInfo, string, { state: RootState }>(
   "region/fetchRegionInfo",
   async (regionName: string) => {
-    const regionPage = await wiki().page(regionName);
+    const regionPage = await wiki({ apiUrl: "https://en.wikipedia.org/w/api.php" }).page(regionName);
     const {
       leaderName,
       leaderParty,
