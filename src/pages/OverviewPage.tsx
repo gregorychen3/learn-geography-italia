@@ -8,7 +8,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import AppFooter from "../components/AppFooter";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -133,7 +132,6 @@ export default function OverviewPage() {
           ))}
         </Grid>
       </Container>
-      <AppFooter />
     </>
   );
 }
