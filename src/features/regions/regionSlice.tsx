@@ -16,14 +16,25 @@ export interface IRegionInfo {
 // THUNKS
 // ------
 
-export const fetchRegionInfo = createAsyncThunk("region/fetchRegionInfo", async (regionName: string) => {
-  const regionPage = await wiki().page(regionName);
-  const info = await regionPage.info();
-  return {
-    ...info,
-    name: regionName,
-  } as IRegionInfo;
-});
+export const fetchRegionInfo = createAsyncThunk<IRegionInfo, string, { state: RootState }>(
+  "region/fetchRegionInfo",
+  async (regionName: string) => {
+    const regionPage = await wiki().page(regionName);
+    const info = await regionPage.info();
+    return {
+      ...info,
+      name: regionName,
+    } as IRegionInfo;
+  },
+  {
+    condition: (regionName, { getState }) => {
+      const { region } = getState();
+      if (region[regionName]) {
+        return false;
+      }
+    },
+  }
+);
 
 //
 // SLICE
