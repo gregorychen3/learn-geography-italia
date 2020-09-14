@@ -10,17 +10,19 @@ export default function App() {
     <>
       <CssBaseline />
       <AppHeader />
-      <Switch>
-        <Route path="/overview">
-          <OverviewPage />
-        </Route>
-        <Route path="/regions">
-          <RegionsPage />
-        </Route>
-        <Route path="/">
-          <Redirect to="/overview" />
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path="/overview">
+            <OverviewPage />
+          </Route>
+          <Route path="/regions">
+            <RegionsPage />
+          </Route>
+          <Route path="/">
+            <Redirect to="/overview" />
+          </Route>
+        </Switch>
+      </main>
     </>
   );
 }

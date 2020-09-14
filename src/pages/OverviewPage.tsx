@@ -106,16 +106,15 @@ export default function OverviewPage() {
 
   return (
     <>
-      <main>
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
-              Geografia dell'Italia
-            </Typography>
-            <Typography variant="h5" align="center" color="textSecondary" paragraph>
-              Learn regions, cities, and roads of Italy
-            </Typography>
-            {/*<div className={classes.heroButtons}>
+      <div className={classes.heroContent}>
+        <Container maxWidth="sm">
+          <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
+            Geografia dell'Italia
+          </Typography>
+          <Typography variant="h5" align="center" color="textSecondary" paragraph>
+            Learn regions, cities, and roads of Italy
+          </Typography>
+          {/*<div className={classes.heroButtons}>
               <Grid container spacing={2} justify="center">
                 <Grid item>
                   <Button variant="contained" color="primary">
@@ -129,29 +128,28 @@ export default function OverviewPage() {
                 </Grid>
               </Grid>
             </div>*/}
-          </Container>
-        </div>
-
-        <Container className={classes.cardGrid} maxWidth="md">
-          <Grid container spacing={4}>
-            {cards.map((card, idx) => (
-              <Grid item key={idx} xs={12} sm={6} md={4}>
-                <Card className={classes.card} onClick={() => h.push(card.route)}>
-                  <CardActionArea>
-                    <CardMedia className={classes.cardMedia} image={card.image} title={card.title} />
-                    <CardContent className={classes.cardContent}>
-                      <Typography gutterBottom variant="h5" component="h2">
-                        {card.title}
-                      </Typography>
-                      <Typography>{card.subtitle}</Typography>
-                    </CardContent>
-                  </CardActionArea>
-                </Card>
-              </Grid>
-            ))}
-          </Grid>
         </Container>
-      </main>
+      </div>
+
+      <Container className={classes.cardGrid} maxWidth="md">
+        <Grid container spacing={4}>
+          {cards.map((card, idx) => (
+            <Grid item key={idx} xs={12} sm={6} md={4}>
+              <Card className={classes.card} onClick={() => h.push(card.route)}>
+                <CardActionArea>
+                  <CardMedia className={classes.cardMedia} image={card.image} title={card.title} />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2">
+                      {card.title}
+                    </Typography>
+                    <Typography>{card.subtitle}</Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
       {/* Footer */}
       <footer className={classes.footer}>
         {/*
