@@ -25,7 +25,7 @@ export default function ExploreRegions() {
   };
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={4}>
       <Grid item xs={12} sm={6}>
         {regionInfo && <RegionInfo regionInfo={regionInfo} />}
       </Grid>
