@@ -6,7 +6,17 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { RegionInfo } from "./types";
+
+export interface IRegionInfo {
+  name: string;
+  leaderName: string;
+  leaderParty: string;
+  leaderTitle: string;
+  populationTotal: number;
+  seat: string;
+  seatType: string;
+  mainImage: string;
+}
 
 const useStyles = makeStyles({
   media: {
@@ -14,7 +24,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function RegionCard({ regionInfo }: { regionInfo: RegionInfo }) {
+export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) {
   const classes = useStyles();
   console.log(regionInfo.mainImage);
 

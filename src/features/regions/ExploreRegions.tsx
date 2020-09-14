@@ -3,11 +3,10 @@ import Italy from "@svg-maps/italy";
 import React, { useState } from "react";
 import { RadioSVGMap } from "react-svg-map";
 import wiki from "wikijs";
-import RegionCard from "./RegionCard";
-import { RegionInfo } from "./types";
+import RegionInfo, { IRegionInfo } from "./RegionCard";
 
 export default function ExploreRegions() {
-  const [regionInfo, setRegionInfo] = useState<RegionInfo | undefined>();
+  const [regionInfo, setRegionInfo] = useState<IRegionInfo | undefined>();
 
   const handleMouseOver = async (e: any) => {
     const region = e.target.getAttribute("name");
@@ -22,13 +21,13 @@ export default function ExploreRegions() {
       name: region,
       ...info,
       mainImage,
-    } as RegionInfo);
+    } as IRegionInfo);
   };
 
   return (
     <Grid container spacing={2}>
       <Grid item xs={12} sm={6}>
-        {regionInfo && <RegionCard regionInfo={regionInfo} />}
+        {regionInfo && <RegionInfo regionInfo={regionInfo} />}
       </Grid>
       <Grid item xs={12} sm={6}>
         <RadioSVGMap map={Italy} onLocationMouseOver={handleMouseOver} />
