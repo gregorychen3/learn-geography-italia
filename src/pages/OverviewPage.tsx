@@ -54,40 +54,47 @@ interface Card {
   title: string;
   subtitle: string;
   image: string;
+  route: string;
 }
 const cards: Card[] = [
   {
     title: "Regions (20)",
     subtitle: "The first-level constituent entities of the Italian Republic",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Lazio_in_Italy.svg/250px-Lazio_in_Italy.svg.png",
+    route: "/regions",
   },
   {
     title: "Provinces (107)",
     subtitle:
       "The constituent entities of the Italian Republic, on an intermediate level between a municipality (comune) and a region (regione)",
     image: "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Roma_in_Italy.svg/250px-Roma_in_Italy.svg.png",
+    route: "/provinces",
   },
   {
     title: "Metropolitan Cities (10)",
     subtitle: "Administrative divisions of Italy; a special type of province",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Italian_regions_provinces.svg/330px-Italian_regions_provinces.svg.png",
+    route: "/metropolitan-cities",
   },
   {
     title: "Autostrade",
     subtitle: "Italian national system of motorways",
     image:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Italia_-_mappa_autostrade.svg/250px-Italia_-_mappa_autostrade.svg.png",
+    route: "/autostrade",
   },
   {
     title: "Rome Metro",
     subtitle: "Rapid transit system in Rome, Italy",
     image: "https://upload.wikimedia.org/wikipedia/commons/3/35/Roma_-_mappa_metropolitana_%28schematica%29.png",
+    route: "/rome-metro",
   },
   {
     title: "Rome Streets",
     subtitle: "The main ones...",
     image: "https://upload.wikimedia.org/wikipedia/commons/8/8c/PompeiiStreet.jpg",
+    route: "/rome-streets",
   },
 ];
 
