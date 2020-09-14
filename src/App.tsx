@@ -2,7 +2,7 @@ import { CssBaseline } from "@material-ui/core";
 import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import AppHeader from "./components/AppHeader";
-import Overview from "./pages/Overview";
+import OverviewPage from "./pages/OverviewPage";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <AppHeader />
       <Switch>
         <Route path="/overview">
-          <Overview />
+          <OverviewPage />
         </Route>
         <Route path="/">
           <Redirect to="/overview" />
