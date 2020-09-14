@@ -3,7 +3,7 @@ import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import Italy from "@svg-maps/italy";
 import React, { useState } from "react";
-import { SVGMap } from "react-svg-map";
+import { RadioSVGMap } from "react-svg-map";
 import "react-svg-map/lib/index.css";
 
 enum Mode {
@@ -39,7 +39,7 @@ export default function RegionsPage() {
         <Box textAlign="center" marginBottom={4}>
           <ModeToggle />
         </Box>
-        <SVGMap map={Italy} />
+        <RadioSVGMap map={Italy} />
       </Container>
     </>
   );
