@@ -20,10 +20,22 @@ export const fetchRegionInfo = createAsyncThunk<IRegionInfo, string, { state: Ro
   "region/fetchRegionInfo",
   async (regionName: string) => {
     const regionPage = await wiki().page(regionName);
-    const info = await regionPage.info();
+    const {
+      leaderName,
+      leaderParty,
+      leaderTitle,
+      populationTotal,
+      seat,
+      seatType,
+    } = (await regionPage.info()) as IRegionInfo;
     return {
-      ...info,
       name: regionName,
+      leaderName,
+      leaderParty,
+      leaderTitle,
+      populationTotal,
+      seat,
+      seatType,
     } as IRegionInfo;
   },
   {
