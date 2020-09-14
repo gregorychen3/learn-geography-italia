@@ -26,7 +26,7 @@ export default function RegionCard({ regionInfo }: { regionInfo: RegionInfo }) {
       <CardMedia className={classes.media} component="img" src={regionInfo.mainImage} />
       <CardContent>
         <Typography gutterBottom variant="h5" component="h2">
-          {regionInfo.officialName}
+          {regionInfo.name}
         </Typography>
         <TableContainer>
           <Table>

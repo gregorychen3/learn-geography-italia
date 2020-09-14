@@ -1,5 +1,5 @@
 export interface RegionInfo {
-  officialName: string;
+  name: string;
   leaderName: string;
   leaderParty: string;
   leaderTitle: string;
