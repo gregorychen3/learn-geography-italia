@@ -60,7 +60,6 @@ export default function OverviewPage() {
   return (
     <>
       <main>
-        {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
@@ -85,8 +84,8 @@ export default function OverviewPage() {
             </div>*/}
           </Container>
         </div>
+
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={4}>
