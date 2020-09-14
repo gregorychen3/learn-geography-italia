@@ -19,28 +19,22 @@ export interface IRegionInfo {
 export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) {
   return (
     <>
-      <Typography gutterBottom variant="h5" component="h2">
+      <Typography gutterBottom variant="h5" align="center">
         {regionInfo.name}
       </Typography>
       <TableContainer>
         <Table>
           <TableBody>
             <TableRow>
-              <TableCell component="th" scope="row">
-                {regionInfo.seatType}
-              </TableCell>
+              <TableCell>{regionInfo.seatType}</TableCell>
               <TableCell>{regionInfo.seat}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell component="th" scope="row">
-                Population
-              </TableCell>
+              <TableCell>Population</TableCell>
               <TableCell>{regionInfo.populationTotal.toLocaleString()}</TableCell>
             </TableRow>
             <TableRow>
-              <TableCell component="th" scope="row">
-                {regionInfo.leaderTitle}
-              </TableCell>
+              <TableCell>{regionInfo.leaderTitle}</TableCell>
               <TableCell>
                 {regionInfo.leaderName}, {regionInfo.leaderParty}
               </TableCell>
