@@ -16,13 +16,7 @@ export default function ExploreRegions() {
 
   const regionInfo = useSelector(selectRegionInfo(region));
 
-  const handleMouseOver = async (e: any) => {
-    const region = e.target.getAttribute("name");
-    if (!region) {
-      return;
-    }
-    setRegion(region);
-  };
+  const handleMouseOver = async (e: any) => setRegion(e.target.getAttribute("name") ?? "");
 
   return (
     <Grid container spacing={4}>
