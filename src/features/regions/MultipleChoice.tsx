@@ -3,7 +3,7 @@ import Italy from "@svg-maps/italy";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RadioSVGMap } from "react-svg-map";
-import RegionInfo from "./RegionInfoCard";
+import MultipleChoiceQuiz from "./MultipleChoiceQuiz";
 import { fetchAllRegions, selectRegionInfo } from "./regionSlice";
 
 export default function MultipleChoice() {
@@ -21,7 +21,7 @@ export default function MultipleChoice() {
   return (
     <Grid container spacing={4}>
       <Grid item xs={12} sm={6}>
-        {regionInfo && <RegionInfo regionInfo={regionInfo} />}
+        <MultipleChoiceQuiz />
       </Grid>
       <Grid item xs={12} sm={6}>
         <RadioSVGMap map={Italy} onLocationMouseOver={handleMouseOver} />
