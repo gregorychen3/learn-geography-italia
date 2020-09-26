@@ -2,6 +2,28 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { RegionInfo } from "../../types";
 import wikipediaClient from "../../wikipediaClient";
+const regions = [
+  "Apulia",
+  "Campania",
+  "Sardinia",
+  "Liguria",
+  "Piedmont",
+  "Aosta Valley",
+  "Lombardy",
+  "Emilia-Romagna",
+  "Trentino-South Tyrol",
+  "Veneto",
+  "Friuli-Venezia Giulia",
+  "Tuscany",
+  "Marche",
+  "Umbria",
+  "Lazio",
+  "Abruzzo",
+  "Molise",
+  "Basilicata",
+  "Calabria",
+  "Sicily",
+];
 
 //
 // THUNKS
