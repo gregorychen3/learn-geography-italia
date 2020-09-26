@@ -3,7 +3,7 @@ import Italy from "@svg-maps/italy";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RadioSVGMap } from "react-svg-map";
-import RegionInfo from "./RegionCard";
+import RegionInfo from "./RegionInfoCard";
 import { fetchRegionInfo, selectRegionInfo } from "./regionSlice";
 
 export default function ExploreRegions() {

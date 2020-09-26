@@ -5,9 +5,9 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import React from "react";
-import { IRegionInfo } from "./regionSlice";
+import { RegionInfo } from "../../types";
 
-export default function RegionInfo({ regionInfo }: { regionInfo: IRegionInfo }) {
+export default function RegionInfoCard({ regionInfo }: { regionInfo: RegionInfo }) {
   return (
     <>
       <Typography gutterBottom variant="h5" align="center">

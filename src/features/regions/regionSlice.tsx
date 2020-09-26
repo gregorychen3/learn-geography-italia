@@ -1,47 +1,18 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import wiki from "wikijs";
 import { RootState } from "../../app/store";
-
-export interface IRegionInfo {
-  name: string;
-  leaderName: string;
-  leaderParty: string;
-  leaderTitle: string;
-  populationTotal: number;
-  seat: string;
-  seatType: string;
-}
+import { RegionInfo } from "../../types";
+import wikipediaClient from "../../wikipediaClient";
 
 //
 // THUNKS
 // ------
 
-export const fetchRegionInfo = createAsyncThunk<IRegionInfo, string, { state: RootState }>(
+export const fetchRegionInfo = createAsyncThunk<RegionInfo, string, { state: RootState }>(
   "region/fetchRegionInfo",
-  async (regionName: string) => {
-    const regionPage = await wiki({ apiUrl: "https://en.wikipedia.org/w/api.php" }).page(regionName);
-    const {
-      leaderName,
-      leaderParty,
-      leaderTitle,
-      populationTotal,
-      seat,
-      seatType,
-    } = (await regionPage.info()) as IRegionInfo;
-    return {
-      name: regionName,
-      leaderName,
-      leaderParty,
-      leaderTitle,
-      populationTotal,
-      seat,
-      seatType,
-    } as IRegionInfo;
-  },
+  async (regionName: string) => wikipediaClient.getRegionInfo(regionName),
   {
     condition: (regionName, { getState }) => {
-      const { region } = getState();
-      if (region[regionName]) {
+      if (getState().region[regionName]) {
         return false;
       }
     },
@@ -53,7 +24,7 @@ export const fetchRegionInfo = createAsyncThunk<IRegionInfo, string, { state: Ro
 // -----
 
 interface RegionState {
-  [name: string]: IRegionInfo;
+  [name: string]: RegionInfo;
 }
 
 const initialState: RegionState = {};
@@ -75,5 +46,5 @@ export default regionSlice.reducer;
 // SELECTORS
 // ---------
 
-export const selectRegionInfo = (regionName: string) => (state: RootState): IRegionInfo | undefined =>
+export const selectRegionInfo = (regionName: string) => (state: RootState): RegionInfo | undefined =>
   state.region[regionName];
