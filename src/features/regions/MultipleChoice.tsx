@@ -6,7 +6,7 @@ import { RadioSVGMap } from "react-svg-map";
 import RegionInfo from "./RegionInfoCard";
 import { fetchAllRegions, selectRegionInfo } from "./regionSlice";
 
-export default function ExploreRegions() {
+export default function MultipleChoice() {
   const d = useDispatch();
 
   useEffect(() => {

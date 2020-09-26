@@ -1,6 +1,7 @@
 import ToggleButton from "@material-ui/lab/ToggleButton";
 import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 export enum Mode {
   Explore,
@@ -14,11 +15,22 @@ interface Props {
 }
 
 export default function ModeToggle({ initialMode, onChange }: Props) {
+  const h = useHistory();
   const [mode, setMode] = useState<Mode>(initialMode);
 
   const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: Mode) => {
     setMode(newMode);
-    onChange(newMode);
+    switch (newMode) {
+      case Mode.Explore:
+        h.push(`/regions/explore`);
+        break;
+      case Mode.MultipleChoice:
+        h.push(`/regions/multiple-choice`);
+        break;
+      case Mode.FillIn:
+        h.push(`/regions/fill-in`);
+        break;
+    }
   };
 
   return (

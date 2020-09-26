@@ -1,8 +1,10 @@
 import { Box, Container, makeStyles } from "@material-ui/core";
-import React, { useState } from "react";
+import React from "react";
+import { Redirect, Route, Switch, useHistory, useParams } from "react-router";
 import "react-svg-map/lib/index.css";
 import ModeToggle, { Mode } from "../components/ModeToggle";
 import ExploreRegions from "../features/regions/ExploreRegions";
+import MultipleChoice from "../features/regions/MultipleChoice";
 
 const useStyles = makeStyles((theme) => ({
   appBarSpacer: theme.mixins.toolbar,
@@ -10,16 +12,27 @@ const useStyles = makeStyles((theme) => ({
 
 export default function RegionsPage() {
   const classes = useStyles();
-  const [mode, setMode] = useState<Mode>(Mode.Explore);
+  const h = useHistory();
+  const { mode } = useParams<{ mode: string }>();
 
   return (
     <>
       <div className={classes.appBarSpacer} />
       <Container maxWidth="md">
         <Box textAlign="center" marginBottom={4}>
-          <ModeToggle initialMode={Mode.Explore} onChange={(m) => setMode(m)} />
+          <ModeToggle initialMode={Mode.Explore} onChange={(m) => h.push(`/regions/${m}`)} />
         </Box>
-        {mode === Mode.Explore && <ExploreRegions />}
+        <Switch>
+          <Route path="/regions/explore">
+            <ExploreRegions />
+          </Route>
+          <Route path="/regions/multiple-choice">
+            <MultipleChoice />
+          </Route>
+          <Route path="/regions">
+            <Redirect to="/regions/explore" />
+          </Route>
+        </Switch>
       </Container>
     </>
   );
