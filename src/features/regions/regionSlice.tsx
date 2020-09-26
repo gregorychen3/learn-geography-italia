@@ -51,7 +51,6 @@ export const regionSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchAllRegions.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.regionInfo = action.payload;
     });
   },
