@@ -1,14 +1,17 @@
 import { Grid } from "@material-ui/core";
 import Italy from "@svg-maps/italy";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RadioSVGMap } from "react-svg-map";
 import RegionInfo from "./RegionInfoCard";
-import { fetchRegionInfo, selectRegionInfo } from "./regionSlice";
+import { fetchAllRegions, selectRegionInfo } from "./regionSlice";
 
 export default function ExploreRegions() {
   const d = useDispatch();
 
+  useEffect(() => {
+    d(fetchAllRegions());
+  }, [d]);
   const [region, setRegion] = useState<string>("");
 
   const regionInfo = useSelector(selectRegionInfo(region));
@@ -19,7 +22,6 @@ export default function ExploreRegions() {
       return;
     }
     setRegion(region);
-    d(fetchRegionInfo(region));
   };
 
   return (

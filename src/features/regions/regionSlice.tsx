@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { RegionInfo } from "../../types";
 import wikipediaClient from "../../wikipediaClient";
+
 const regions = [
   "Apulia",
   "Campania",
@@ -29,35 +30,29 @@ const regions = [
 // THUNKS
 // ------
 
-export const fetchRegionInfo = createAsyncThunk<RegionInfo, string, { state: RootState }>(
-  "region/fetchRegionInfo",
-  async (regionName: string) => wikipediaClient.getRegionInfo(regionName),
-  {
-    condition: (regionName, { getState }) => {
-      if (getState().region[regionName]) {
-        return false;
-      }
-    },
-  }
-);
+export const fetchAllRegions = createAsyncThunk("region/fetchRegionInfo", async () => {
+  const regionInfo = await Promise.all(regions.map((r) => wikipediaClient.getRegionInfo(r)));
+  return Object.fromEntries(regions.map((r, i) => [r, regionInfo[i]]));
+});
 
 //
 // SLICE
 // -----
 
 interface RegionState {
-  [name: string]: RegionInfo;
+  regionInfo: { [name: string]: RegionInfo };
 }
 
-const initialState: RegionState = {};
+const initialState: RegionState = { regionInfo: {} };
 
 export const regionSlice = createSlice({
   name: "region",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchRegionInfo.fulfilled, (state, action) => {
-      state[action.payload.name] = action.payload;
+    builder.addCase(fetchAllRegions.fulfilled, (state, action) => {
+      console.log(action.payload);
+      state.regionInfo = action.payload;
     });
   },
 });
@@ -69,4 +64,4 @@ export default regionSlice.reducer;
 // ---------
 
 export const selectRegionInfo = (regionName: string) => (state: RootState): RegionInfo | undefined =>
-  state.region[regionName];
+  state.region.regionInfo[regionName];
