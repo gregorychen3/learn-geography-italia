@@ -29,6 +29,9 @@ export default function RegionsPage() {
           <Route path="/regions/multiple-choice">
             <MultipleChoice />
           </Route>
+          <Route path="/regions/fill-in">
+            <MultipleChoice />
+          </Route>
           <Route path="/regions">
             <Redirect to="/regions/explore" />
           </Route>

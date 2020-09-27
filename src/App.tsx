@@ -16,6 +16,9 @@ export default function App() {
           <Route path="/overview">
             <OverviewPage />
           </Route>
+          <Route path="/regions/:mode">
+            <RegionsPage />
+          </Route>
           <Route path="/regions">
             <RegionsPage />
           </Route>
