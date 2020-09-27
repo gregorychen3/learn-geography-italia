@@ -3,31 +3,31 @@ import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-export enum Mode {
+export enum ModeRoute {
   Explore,
   MultipleChoice,
   FillIn,
 }
 
 interface Props {
-  initialMode: Mode;
-  onChange: (mode: Mode) => void;
+  initialMode: ModeRoute;
+  onChange: (mode: ModeRoute) => void;
 }
 
 export default function ModeToggle({ initialMode, onChange }: Props) {
   const h = useHistory();
-  const [mode, setMode] = useState<Mode>(initialMode);
+  const [mode, setMode] = useState<ModeRoute>(initialMode);
 
-  const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: Mode) => {
+  const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: ModeRoute) => {
     setMode(newMode);
     switch (newMode) {
-      case Mode.Explore:
+      case ModeRoute.Explore:
         h.push(`/regions/explore`);
         break;
-      case Mode.MultipleChoice:
+      case ModeRoute.MultipleChoice:
         h.push(`/regions/multiple-choice`);
         break;
-      case Mode.FillIn:
+      case ModeRoute.FillIn:
         h.push(`/regions/fill-in`);
         break;
     }
@@ -35,9 +35,9 @@ export default function ModeToggle({ initialMode, onChange }: Props) {
 
   return (
     <ToggleButtonGroup value={mode} exclusive onChange={handleAlignment} size="small">
-      <ToggleButton value={Mode.Explore}>EXPLORE</ToggleButton>
-      <ToggleButton value={Mode.MultipleChoice}>MULTIPLE CHOICE</ToggleButton>
-      <ToggleButton value={Mode.FillIn}>FILL IN</ToggleButton>
+      <ToggleButton value={ModeRoute.Explore}>EXPLORE</ToggleButton>
+      <ToggleButton value={ModeRoute.MultipleChoice}>MULTIPLE CHOICE</ToggleButton>
+      <ToggleButton value={ModeRoute.FillIn}>FILL IN</ToggleButton>
     </ToggleButtonGroup>
   );
 }

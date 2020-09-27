@@ -2,7 +2,7 @@ import { Box, Container, makeStyles } from "@material-ui/core";
 import React from "react";
 import { Redirect, Route, Switch, useHistory, useParams } from "react-router";
 import "react-svg-map/lib/index.css";
-import ModeToggle, { Mode } from "../components/ModeToggle";
+import ModeToggle, { ModeRoute } from "../components/ModeToggle";
 import ExploreRegions from "../features/regions/ExploreRegions";
 import MultipleChoice from "../features/regions/MultipleChoice";
 
@@ -20,7 +20,7 @@ export default function RegionsPage() {
       <div className={classes.appBarSpacer} />
       <Container maxWidth="md">
         <Box textAlign="center" marginBottom={4}>
-          <ModeToggle initialMode={Mode.Explore} onChange={(m) => h.push(`/regions/${m}`)} />
+          <ModeToggle initialMode={ModeRoute.Explore} onChange={(m) => h.push(`/regions/${m}`)} />
         </Box>
         <Switch>
           <Route path="/regions/explore">
