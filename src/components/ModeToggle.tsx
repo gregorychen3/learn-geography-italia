@@ -9,30 +9,24 @@ export enum ModeRoute {
   FillIn = "fill-in",
 }
 
-interface Props {
-  initialMode: ModeRoute;
-  onChange: (mode: ModeRoute) => void;
-}
-
-export default function ModeToggle({ initialMode, onChange }: Props) {
+export default function ModeToggle() {
   const h = useHistory();
   const { mode } = useParams<{ mode: string }>();
 
   const handleAlignment = (_: React.MouseEvent<HTMLElement>, newMode: ModeRoute) => {
     switch (newMode) {
       case ModeRoute.Explore:
-        h.push(`/regions/explore`);
+        h.push(`/regions/${ModeRoute.Explore}`);
         break;
       case ModeRoute.MultipleChoice:
-        h.push(`/regions/multiple-choice`);
+        h.push(`/regions/${ModeRoute.MultipleChoice}`);
         break;
       case ModeRoute.FillIn:
-        h.push(`/regions/fill-in`);
+        h.push(`/regions/${ModeRoute.FillIn}`);
         break;
     }
   };
 
-  console.log(mode);
   return (
     <ToggleButtonGroup value={mode} exclusive onChange={handleAlignment} size="small">
       <ToggleButton value={ModeRoute.Explore}>EXPLORE</ToggleButton>
