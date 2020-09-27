@@ -61,6 +61,7 @@ export default regionSlice.reducer;
 //
 // SELECTORS
 // ---------
+export const selectAllsRegionsInfo = (state: RootState) => state.region.regionInfo;
 
 export const selectRegionInfo = (regionName: string) => (state: RootState): RegionInfo | undefined =>
   state.region.regionInfo[regionName];
