@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, Grid, Radio } from "@material-ui/core";
+import { FormControlLabel, Grid, Radio } from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import { Field, Form, Formik } from "formik";
 import { RadioGroup } from "formik-material-ui";
@@ -9,9 +9,9 @@ interface Values {
 }
 
 interface Props {
-  regionOpts: string[];
+  opts: string[];
 }
-export default function MultipleChoiceForm({ regionOpts }: Props) {
+export default function MultipleChoiceForm({ opts }: Props) {
   return (
     <Formik initialValues={{ selection: "" }} onSubmit={() => {}}>
       {({ isSubmitting }) => (
@@ -19,7 +19,7 @@ export default function MultipleChoiceForm({ regionOpts }: Props) {
           <Grid container direction="row" justify="flex-end" alignItems="flex-start">
             <Grid item xs={12}>
               <Field component={RadioGroup} name="activity">
-                {regionOpts.map((r) => (
+                {opts.map((r) => (
                   <FormControlLabel
                     value={r}
                     control={<Radio disabled={isSubmitting} />}
